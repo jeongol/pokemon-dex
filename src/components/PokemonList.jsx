@@ -25,14 +25,13 @@ function PokemonList({ pokemonList, onAddPokemon }) {
 export default PokemonList;
 
 const ListContainer = styled.div`
-  background-color: #dbdbdb;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
-  width: 1200px;
-  margin: auto;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  text-align: center;
+  border: 1px solid 
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 `;
