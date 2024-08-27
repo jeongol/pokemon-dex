@@ -1,18 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import PokemonList from "./PokemonList";
 
 function PokemonCard({ pokemon, onAdd, onRemove, isSelected }) {
   return (
     <Card>
       <img src={pokemon.img_url} alt={""} />
-      
-      
+      <p>no.</p>
+
       <p>{pokemon.korean_name}</p>
 
       {isSelected ? (
         <Button
-          onClick={() => {
+          onClick={(pokemon) => {
             onRemove(pokemon);
           }}
         >
@@ -20,7 +19,7 @@ function PokemonCard({ pokemon, onAdd, onRemove, isSelected }) {
         </Button>
       ) : (
         <Button
-          onClick={(e) => {
+          onClick={(pokemon) => {
             onAdd(pokemon);
           }}
         >
