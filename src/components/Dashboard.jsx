@@ -1,21 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import PokemonCard from "./PokemonCard";
 
-const Dashboard = ({ selectedPokemon }) => {
+const Dashboard = ({ selectedPokemon, removePokemon }) => {
   return (
     <DashboardContainer>
-      <h2>포켓몬 선택</h2>
-      <DashboardCard>
-        <ul>
-          {selectedPokemon.map((pokemon, inadd) =>
-            pokemon === null ? (
-              <li key={inadd}>확인</li>
-            ) : (
-              <li key={pokemon.id}>{pokemon.korean_name}</li>
-            )
-          )}
-        </ul>
-      </DashboardCard>
+      <Title>대시보드</Title>
+      {selectedPokemon.length === 0 ? (
+        <Message>선택된 포켓몬이 없습니다.</Message>
+      ) : (
+        <DashboardContent>
+          {selectedPokemon.map((pokemon) => (
+            <PokemonCard
+              key={pokemon.id}
+              pokemon={pokemon}
+              handleOnClick={removePokemon}
+            />
+          ))}
+        </DashboardContent>
+      )}
     </DashboardContainer>
   );
 };

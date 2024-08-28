@@ -2,36 +2,29 @@ import React from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
 
-function PokemonList({ pokemonList, onAddPokemon }) {
-  console.log(pokemonList);
+const PokemonList = ({ pokemonList, onAddPokemon }) => {
   return (
     <ListContainer>
-      {pokemonList.map(function (pokemon) {
-        return (
-          <PokemonCard
+      {PokemonList.map(pokemon => (
+        <PokemonCard
             key={pokemon.id}
             pokemon={pokemon}
-            onAdd={() => {
-              onAddPokemon(pokemon);
-            }}
+            onAddPokemon={onAddPokemon}
             isSelected={false}
           />
-        );
-      })}
+      ))}
     </ListContainer>
   );
-}
+};
 
 export default PokemonList;
 
 const ListContainer = styled.div`
-  border: 1px solid 
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
-    text-align: center;
-    padding: 10px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border_radius: 10px;
 `;

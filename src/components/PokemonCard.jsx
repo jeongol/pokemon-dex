@@ -1,60 +1,36 @@
 import React from "react";
 import styled from "styled-components";
 
-function PokemonCard({ pokemon, onAdd, onRemove, isSelected }) {
+function PokemonCard({ pokemon, handleOnClick }) {
   return (
-    <Card>
-      <img src={pokemon.img_url} alt={""} />
-      <p>no.</p>
-
-      <p>{pokemon.korean_name}</p>
-
-      {isSelected ? (
-        <Button
-          onClick={(pokemon) => {
-            onRemove(pokemon);
-          }}
-        >
-          삭제
-        </Button>
-      ) : (
-        <Button
-          onClick={(pokemon) => {
-            onAdd(pokemon);
-          }}
-        >
-          추가
-        </Button>
-      )}
+    <Card
+      onClick={() => {
+        handleOnClick(pokemon);
+      }}
+    >
+      <div>{pokemon.koren_name}</div>
+      <img src={pokemon.img_url} />
+      <div>{pokemon.description}</div>
     </Card>
   );
 }
-
 export default PokemonCard;
 
 export const Card = styled.div`
-  text-align: center;
-  background-color: white;
+  border: 1px solid #ddd;
+  background-color: #fff;
   border-radius: 10px;
-  display: block;
-  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1;
+  text-align: coenter;
   padding: 10px;
+  cursor: pointer;
+  color: black;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   &:hover {
-    background: cornflowerblue;
-    color: white;
-    transition: all 0.5s ease;
-    transform: scale(1.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0, 0.2);
   }
-`;
-
-export const Button = styled.button`
-  cursor: pointer;
-  /* display: absolute; */
-  z-index: 1;
-  border: none;
-  height: 40px;
-  padding: 10px;
-  text-align: center;
-  border-radius: 5px;
-  margin: auto;
 `;
