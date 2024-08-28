@@ -15,16 +15,20 @@ function Dex() {
     } else {
       setSelectedPokemon([...selectedPokemon, pokemon]);
     }
-    return (
-      <div>
-        <Dashboard
-          selectedPokemon={selectedPokemon}
-          onRemovePokemon={removePokemon}
-        />
-        <PokemonList pokemonList={MOCK_DATA} onAddPokemon={addPokemon} />
-      </div>
-    );
   };
+
+  const removePokemon = (pokemon) => {
+    setSelectedPokemon(selectedPokemon.filter((p) => p.id !== pokemon.id));
+  };
+  return (
+    <div>
+      <Dashboard
+        selectedPokemon={selectedPokemon}
+        onRemovePokemon={removePokemon}
+      />
+      <PokemonList pokemonList={MOCK_DATA} onAddPokemon={addPokemon} />
+    </div>
+  );
 }
 
 export default Dex;

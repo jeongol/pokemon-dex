@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard";
 
-const Dashboard = ({ selectedPokemon }) => {
+const Dashboard = ({ selectedPokemon, removePokemon }) => {
   return (
     <DashboardContainer>
       <Title>대시보드</Title>
@@ -11,7 +11,11 @@ const Dashboard = ({ selectedPokemon }) => {
       ) : (
         <DashboardContent>
           {selectedPokemon.map((pokemon) => (
-            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+            <PokemonCard
+              key={pokemon.id}
+              pokemon={pokemon}
+              handleOnClick={removePokemon}
+            />
           ))}
         </DashboardContent>
       )}
